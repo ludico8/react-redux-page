@@ -9,6 +9,7 @@ import Footer from './FooterComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 // import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';   // Uncomment this line if you have an API to fetch data.
 
 const mapStateToProps = state => {
@@ -98,14 +99,18 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path='/home' component={HomePage} />
-          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />     {/*  // Way #2 to supply a component. */}
-          {/* <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />} /> */}
-          <Route path='/menu/:dishId' component={DishWithId} />
-          <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-          <Redirect to="/home" />
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+            <Switch>
+              <Route path='/home' component={HomePage} />
+              <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />     {/*  // Way #2 to supply a component. */}
+              {/* <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />} /> */}
+              <Route path='/menu/:dishId' component={DishWithId} />
+              <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+              <Redirect to="/home" />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
         <Footer />
       </div>
     );
