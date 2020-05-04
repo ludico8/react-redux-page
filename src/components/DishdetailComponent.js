@@ -47,7 +47,7 @@ class CommentForm extends Component {
   constructor(props) {
     super(props);
 
-    this.toogleModal = this.toogleModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
@@ -56,29 +56,30 @@ class CommentForm extends Component {
     };
   }
 
-  toogleModal() {
+  toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen
     })
   }
 
   handleSubmit(values) {
-    this.toogleModal();
+    debugger;
+    this.toggleModal();
     this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   render() {
     return(
       <div>
-        <Button outline onClick={this.toogleMOdal}><span></span></Button>
+        <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span>Submit Comment</Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toogle={this.toggleModal}>Submit</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Submit</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleSubmit}>
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
                 <Col>
                   <Label htmlFor="rating">Rating</Label>
-                  <Control.select model=".rating" id="rating">
+                  <Control.select model=".rating" id="rating" className="form-control">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -110,10 +111,10 @@ class CommentForm extends Component {
               <Row className="form-group">
                 <Col>
                   <Label htmlFor="comment">Comment</Label>
-                  <Control.textarea model=".comment" rows="6" className=""/>
+                  <Control.textarea model=".comment" rows="6" className="form-control"/>
                 </Col>
-                <Button type="submit" className="bg ">Submit</Button>
               </Row>
+              <Button type="submit" className="bg-primary">Submit</Button>
             </LocalForm>
           </ModalBody>
         </Modal>
@@ -141,7 +142,9 @@ const DishDetail = (props) => {
             <RenderDish dish={props.dish} />
           </div>
           <div className="col-12 col-md-5 m-1">
-            <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
+            <RenderComments comments={props.comments}
+              addComment={props.addComment}
+              dishId={props.dish.id} />
           </div>
         </div>
       </div>
