@@ -20,7 +20,7 @@ function RenderDish({dish}) {
     </Card>
   )
 }
-
+// function RenderComments({comments, postComment, dishId}) {     // Use this line if you have a valid Node API to fetch data.  */}
 function RenderComments({comments, addComment, dishId}) {
   if (comments != null) {
     return(
@@ -37,6 +37,7 @@ function RenderComments({comments, addComment, dishId}) {
           })}
         </ul>
         <CommentForm dishId={dishId} addComment={addComment} />
+        {/* <CommentForm dishId={dishId} postComment={postComment} />    // Use this line if you have a valid Node API to fetch data.  */}
       </div>
     )
   } else {
@@ -68,6 +69,7 @@ class CommentForm extends Component {
   handleSubmit(values) {
     this.toggleModal();
     this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);    // Use this line  if you have a valid Node API to fetch data.  */}
   }
 
   render() {
@@ -162,6 +164,7 @@ const DishDetail = (props) => {
           <div className="col-12 col-md-5 m-1">
             <RenderComments comments={props.comments}
               addComment={props.addComment}
+              // postComment={props.postComment}   // Use this line  if you have a valid Node API to fetch data.  */}
               dishId={props.dish.id} />
           </div>
         </div>

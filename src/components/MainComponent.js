@@ -9,7 +9,7 @@ import Footer from './FooterComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
-// import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';   // Uncomment this line if you have an API to fetch data.
+// import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';   // Uncomment this line if you have an API to fetch data.
 
 const mapStateToProps = state => {
   return {
@@ -32,7 +32,8 @@ const mapDispatchToProps = dispatch => ({
 //   fetchDishes: () => { dispatch(fetchDishes())},
 //   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
 //   fetchComments: () => dispatch(fetchComments()),
-//   fetchPromos: () => dispatch(fetchPromos())
+//   fetchPromos: () => dispatch(fetchPromos()),
+//   postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 // });
 
 class Main extends Component {
@@ -65,7 +66,8 @@ class Main extends Component {
         //   errMess={this.props.dishes.errMess}
         //   comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
         //   commentsErrMess={this.props.comments.errMess}
-        //   addComment={this.props.addComment}
+        //   addComment={this.props.addComment},
+        //   postComment={this.props.postComment}
         // />
       );
     };
