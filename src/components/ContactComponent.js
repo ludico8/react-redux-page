@@ -3,7 +3,6 @@ import { Breadcrumb, BreadcrumbItem, Button, Row, Col, Label } from 'reactstrap'
 import { Control, Form, Errors, actions } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
-//function Contact(props) {
 class Contact extends Component {
   constructor(props) {
     super(props);
