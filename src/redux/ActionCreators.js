@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { DISHES } from '../shared/dishes';
-// import { baseUrl } from '../shared/baseUrl';   [ use this line if you have a valid Node API to do a request ]
+// import { baseUrl } from '../shared/baseUrl';   // Use this line if you have a valid Node API to fetch data.
 
 export const addComment = (dishId, rating, author, comment) => ({
     type: ActionTypes.ADD_COMMENT,
